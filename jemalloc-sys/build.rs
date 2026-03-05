@@ -284,6 +284,11 @@ fn main() {
         cmd.arg("--enable-prof");
     }
 
+    if env::var("CARGO_FEATURE_PROFILING_LIBUNWIND").is_ok() {
+        info!("CARGO_FEATURE_PROFILING_LIBUNWIND set");
+        cmd.arg("--enable-prof-libunwind");
+    }
+
     if env::var("CARGO_FEATURE_STATS").is_ok() {
         info!("CARGO_FEATURE_STATS set");
         cmd.arg("--enable-stats");

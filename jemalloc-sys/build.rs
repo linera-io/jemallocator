@@ -363,6 +363,9 @@ fn main() {
     if target.contains("riscv") {
         println!("cargo:rustc-link-lib=atomic");
     }
+    if env::var("CARGO_FEATURE_PROFILING_LIBUNWIND").is_ok() {
+        println!("cargo:rustc-link-lib=unwind");
+    }
     println!("cargo:rerun-if-changed=jemalloc");
 
     if target.contains("android") {

@@ -387,7 +387,7 @@ fn make_command(make_cmd: &str, build_dir: &Path, num_jobs: &str) -> Command {
         let makeflags = if let Ok(orig_makeflags) = std::env::var("MAKEFLAGS") {
             // Prepend Cargo makeflags before externally configured makeflags
             // Adding Cargo makeflags at the end was causing issues, see
-            // https://github.com/tikv/jemallocator/issues/92#issuecomment-3536269176.
+            // https://github.com/linera-io/jemallocator/issues/92#issuecomment-3536269176.
             format!("{makeflags} {orig_makeflags}")
         } else {
             makeflags

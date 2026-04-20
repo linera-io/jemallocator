@@ -1,5 +1,5 @@
 [package]
-name = "tikv-jemalloc-ctl"
+name = "linera-jemalloc-ctl"
 version = "0.6.1"
 authors = [
     "Steven Fackler <sfackler@gmail.com>",
@@ -10,35 +10,35 @@ license = "MIT/Apache-2.0"
 readme = "README.md"
 categories = ["memory-management", "api-bindings", "development-tools" ]
 keywords = ["allocator", "jemalloc"]
-repository = "https://github.com/tikv/jemallocator"
-homepage = "https://github.com/tikv/jemallocator"
-documentation = "https://docs.rs/tikv-jemalloc-ctl"
+repository = "https://github.com/linera-io/jemallocator"
+homepage = "https://github.com/linera-io/jemallocator"
+documentation = "https://docs.rs/linera-jemalloc-ctl"
 description = """
 A safe wrapper over jemalloc's control and introspection APIs
 """
 edition = "2018"
 
 [badges]
-travis-ci = { repository = "tikv/jemallocator" }
-codecov = { repository = "tikv/jemallocator" }
-is-it-maintained-issue-resolution = { repository = "tikv/jemallocator" }
-is-it-maintained-open-issues = { repository = "tikv/jemallocator" }
+travis-ci = { repository = "linera-io/jemallocator" }
+codecov = { repository = "linera-io/jemallocator" }
+is-it-maintained-issue-resolution = { repository = "linera-io/jemallocator" }
+is-it-maintained-open-issues = { repository = "linera-io/jemallocator" }
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-tikv-jemalloc-sys = { path = "../jemalloc-sys", version = "0.6.1" }
+linera-jemalloc-sys = { path = "../jemalloc-sys", version = "0.6.1" }
 libc = { version = "0.2", default-features = false }
 paste = "1"
 
 [dev-dependencies]
-tikv-jemallocator = { path = "../jemallocator", version = "0.6.1" }
+linera-jemallocator = { path = "../jemallocator", version = "0.6.1" }
 
 [features]
 default = []
-stats = ["tikv-jemalloc-sys/stats"]
-profiling = ["tikv-jemalloc-sys/profiling"]
+stats = ["linera-jemalloc-sys/stats"]
+profiling = ["linera-jemalloc-sys/profiling"]
 use_std = [ "libc/use_std" ]
-disable_initial_exec_tls = ["tikv-jemalloc-sys/disable_initial_exec_tls"]
+disable_initial_exec_tls = ["linera-jemalloc-sys/disable_initial_exec_tls"]
 
 [package.metadata.docs.rs]
 rustdoc-args = [ "--cfg", "jemallocator_docs" ]

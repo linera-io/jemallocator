@@ -1,13 +1,13 @@
 #[cfg(prefixed)]
 #[test]
 fn malloc_is_prefixed() {
-    assert_ne!(tikv_jemalloc_sys::malloc as usize, libc::malloc as usize)
+    assert_ne!(linera_jemalloc_sys::malloc as usize, libc::malloc as usize)
 }
 
 #[cfg(not(prefixed))]
 #[test]
 fn malloc_is_overridden() {
-    assert_eq!(tikv_jemalloc_sys::malloc as usize, libc::malloc as usize)
+    assert_eq!(linera_jemalloc_sys::malloc as usize, libc::malloc as usize)
 }
 
 #[cfg(any(
@@ -19,6 +19,6 @@ fn malloc_is_overridden() {
 ))]
 #[test]
 fn malloc_and_libc_are_interoperable_when_overridden() {
-    let ptr = unsafe { tikv_jemalloc_sys::malloc(42) };
+    let ptr = unsafe { linera_jemalloc_sys::malloc(42) };
     unsafe { libc::free(ptr) };
 }

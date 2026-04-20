@@ -1,6 +1,6 @@
-use std::alloc::{GlobalAlloc, Layout};
 use linera_jemalloc_ctl::{Access, AsName};
 use linera_jemallocator::Jemalloc;
+use std::alloc::{GlobalAlloc, Layout};
 
 #[global_allocator]
 static A: Jemalloc = Jemalloc;

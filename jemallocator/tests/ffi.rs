@@ -1,10 +1,10 @@
-extern crate tikv_jemalloc_sys as ffi;
+extern crate linera_jemalloc_sys as ffi;
 
 use std::mem;
 use std::ptr;
 
 use libc::{c_char, c_void};
-use tikv_jemallocator::Jemalloc;
+use linera_jemallocator::Jemalloc;
 
 #[global_allocator]
 static A: Jemalloc = Jemalloc;

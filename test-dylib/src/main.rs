@@ -2,7 +2,7 @@
 //! the place we'd expect it to.
 use std::ffi::{c_char, c_void, CStr};
 
-use tikv_jemalloc_sys as _;
+use linera_jemalloc_sys as _;
 
 extern "C-unwind" {
     fn dep_lookup_malloc_address() -> *const c_char;
@@ -30,18 +30,18 @@ fn main() {
     let ptr = unsafe { dep_malloc(10) };
     unsafe { libc::free(ptr) };
 
-    // If overidden, test that the same is true for `tikv_jemalloc_sys`'
+    // If overidden, test that the same is true for `linera_jemalloc_sys`'
     // symbols being interoperable with `free`.
     if cfg!(feature = "override_allocator_on_supported_platforms") {
-        let ptr = unsafe { tikv_jemalloc_sys::malloc(10) };
+        let ptr = unsafe { linera_jemalloc_sys::malloc(10) };
         unsafe { dep_free(ptr) };
-        let ptr = unsafe { tikv_jemalloc_sys::malloc(10) };
+        let ptr = unsafe { linera_jemalloc_sys::malloc(10) };
         unsafe { libc::free(ptr) };
 
         let ptr = unsafe { libc::malloc(10) };
-        unsafe { tikv_jemalloc_sys::free(ptr) };
+        unsafe { linera_jemalloc_sys::free(ptr) };
         let ptr = unsafe { dep_malloc(10) };
-        unsafe { tikv_jemalloc_sys::free(ptr) };
+        unsafe { linera_jemalloc_sys::free(ptr) };
     }
 
     // Extra check that the `malloc` symbol was actually from the same place.
